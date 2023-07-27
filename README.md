@@ -21,15 +21,15 @@ If you have a paid domain at Cloudflare, you can make the temporary URL permanen
 
 1. Get your `Global API Key` from Cloudflare's Dashboard, which can be found [here](https://dash.cloudflare.com/profile/api-tokens). 
    This key will be needed for the Docker container.
-   ![Pasted image 20230727204547.png]
+   ![get_cf_global_api_key](assets/get_cf_global_api_key.png)
 
 2. Select your desired domain under "Websites" in the [Cloudflare Dashboard](https://dash.cloudflare.com) and scroll down on the "Overview" page to find your `Zone ID`.
-   ![Pasted image 20230727205033.png]
+   ![get_cf_zone_id](assets/get_cf_zone_id.png)
 
 3. Navigate to "DNS Records" in the same Dashboard section as "Overview."
 
 4. Create a new `CNAME record`. The name should be a part of your domain (e.g., name = minecraft => minecraft.yourdomain.tld). The highlighted URL in the screenshot below will be needed for Docker.
-   ![Pasted image 20230727205447.png]
+   ![base_cf_cname_config](assets/base_cf_cname_config.png)
 
 5. Initially, the target could be set to example.com. The target will be automatically updated by NCFS later.
 
@@ -40,7 +40,7 @@ If you have a paid domain at Cloudflare, you can make the temporary URL permanen
 8. Priority, weight, and port can be set to random numbers within the range shown below the inputs. These fields will be updated automatically when the server starts with NCFS.
 
 9. The target should be set to your entire `CNAME domain`.
-   ![Pasted image 20230727210104.png]
+   ![base_cf_srv_config](assets/base_cf_srv_config.png)
 
 That's it! You can now continue with the Docker configuration.
 
@@ -49,24 +49,23 @@ That's it! You can now continue with the Docker configuration.
 Now, you can create a `docker-compose.yml` file and copy the following configuration for a basic server without any whitelisting in the latest Minecraft version. If you want to configure your server a little bit more, you can just add the needed `environment` variables and control the server as mentioned [here](https://docker-minecraft-server.readthedocs.io/en/latest/):
 
 ```yaml
-version: "3.8"  
-services:  
-  minecraft-server:  
-    image: florianbreuker/minecraft-server  
-    container_name: minecraft-server  
-    tty: true  
-    stdin_open: true  
-    environment:  
-      - EULA=TRUE  
-      - NGROK_TCP_PORT=25565 # Minecraft server port, default is 25565  
-      - NGROK_AUTH_TOKEN=<YOUR_NGROK_AUTH_TOKEN> # ngrok auth token  
-      #  ONLY if you have a Cloudflare Domain      
-      - CLOUDFLARE_AUTH_EMAIL=<YOUR_CLOUDFLARE_AUTH_EMAIL> # Cloudflare auth email  
-      - CLOUDFLARE_API_KEY=<YOUR_CLOUDFLARE_API_KEY> # Cloudflare Global API Key  
-      - CLOUDFLARE_ZONE_ID=<YOUR_CLOUDFLARE_ZONE_ID> # Cloudflare Zone ID  
-      - CLOUDFLARE_CNAME_RECORD=<YOUR_CLOUDFLARE_CNAME_RECORD> # Cloudflare CNAME Domain        
-      - CLOUDFLARE_SRV_RECORD=<YOUR_CLOUDFLARE_SRV_RECORD> # Cloudflare SRV Domain (for your connection)      
-    volumes:  
+version: "3.8"
+services:
+  minecraft-server:
+    image: florianbreuker/docker-ncfs-minecraft-server
+    container_name: minecraft-server
+    tty: true
+    stdin_open: true
+    environment:
+      - EULA=TRUE
+      - NGROK_AUTH_TOKEN=<YOUR_NGROK_AUTH_TOKEN> # ngrok auth token
+      #  If you have a Cloudflare Domain
+      #- CF_AUTH_EMAIL=<YOUR_CLOUDFLARE_AUTH_EMAIL> # Cloudflare account E-Mail
+      #- CF_API_KEY=<YOUR_CLOUDFLARE_API_KEY> # Cloudflare Global API Key
+      #- CF_ZONE_ID=<YOUR_CLOUDFLARE_ZONE_ID> # Cloudflare Zone ID
+      #- CF_CNAME_RECORD=<YOUR_CLOUDFLARE_CNAME_RECORD> # Cloudflare CNAME Domain
+      #- CF_SRV_RECORD=<YOUR_CLOUDFLARE_SRV_RECORD> # Cloudflare SRV Domain (for your connection)
+    volumes:
       - ./configs/minecraft-server-config/data:/data
   ```
 If you are using Cloudflare, you can connect to the server using the value from `CLOUDFLARE_SRV_RECORD_NAME`.
@@ -75,4 +74,4 @@ If you are using Cloudflare, you can connect to the server using the value from 
 
 Now, you can start the Minecraft version of your server in your Launcher. And connect to your server via the URLs.
 
-![[Pasted image 20230727211658.png]]
+![minecraft_server_edit](minecraft_server_edit.png)
