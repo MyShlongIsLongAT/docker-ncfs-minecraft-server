@@ -30,7 +30,7 @@ If you have a paid domain at Cloudflare, you can make the temporary URL permanen
 
 3. Navigate to "DNS Records" in the same Dashboard section as "Overview."
 
-4. Create a new `CNAME record`. The name should be a part of your domain (e.g., name = minecraft => minecraft.yourdomain.tld). The highlighted URL in the screenshot below will be needed for Docker.
+4. Create a new `CNAME record`. The name should be a part of your domain (e.g., name = `minecraft` => minecraft.yourdomain.tld). The highlighted URL in the screenshot below will be needed for Docker.
    
    ![base_cf_cname_config](assets/base_cf_cname_config.png)
 
