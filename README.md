@@ -21,14 +21,17 @@ If you have a paid domain at Cloudflare, you can make the temporary URL permanen
 
 1. Get your `Global API Key` from Cloudflare's Dashboard, which can be found [here](https://dash.cloudflare.com/profile/api-tokens). 
    This key will be needed for the Docker container.
+   
    ![get_cf_global_api_key](assets/get_cf_global_api_key.png)
 
 2. Select your desired domain under "Websites" in the [Cloudflare Dashboard](https://dash.cloudflare.com) and scroll down on the "Overview" page to find your `Zone ID`.
+   
    ![get_cf_zone_id](assets/get_cf_zone_id.png)
 
 3. Navigate to "DNS Records" in the same Dashboard section as "Overview."
 
 4. Create a new `CNAME record`. The name should be a part of your domain (e.g., name = minecraft => minecraft.yourdomain.tld). The highlighted URL in the screenshot below will be needed for Docker.
+   
    ![base_cf_cname_config](assets/base_cf_cname_config.png)
 
 5. Initially, the target could be set to example.com. The target will be automatically updated by NCFS later.
@@ -40,6 +43,7 @@ If you have a paid domain at Cloudflare, you can make the temporary URL permanen
 8. Priority, weight, and port can be set to random numbers within the range shown below the inputs. These fields will be updated automatically when the server starts with NCFS.
 
 9. The target should be set to your entire `CNAME domain`.
+   
    ![base_cf_srv_config](assets/base_cf_srv_config.png)
 
 That's it! You can now continue with the Docker configuration.
@@ -74,4 +78,4 @@ If you are using Cloudflare, you can connect to the server using the value from 
 
 Now, you can start the Minecraft version of your server in your Launcher. And connect to your server via the URLs.
 
-![minecraft_server_edit](minecraft_server_edit.png)
+![minecraft_server_edit](assets/minecraft_server_edit.png)
