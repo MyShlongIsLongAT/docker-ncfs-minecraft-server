@@ -71,7 +71,20 @@ services:
       #- CF_SRV_RECORD=<YOUR_CLOUDFLARE_SRV_RECORD> # Cloudflare SRV Domain (for your connection)
     volumes:
       - ./configs/minecraft-server-config/data:/data
-  ```
+```
+
+To start the server, run the following command:
+
+```
+docker-compose up -d
+```
+
+If you're not using Cloudflare, you can get your temporary URL with the following command:
+
+```
+docker logs minecraft-server | grep -Eo "[0-9]*.tcp.[a-z]*.ngrok.io:[0-9]*"
+```
+
 If you are using Cloudflare, you can connect to the server using the value from `CLOUDFLARE_SRV_RECORD_NAME`.
 
 ### Minecraft
