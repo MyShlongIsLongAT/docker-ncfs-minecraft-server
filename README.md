@@ -85,7 +85,7 @@ If you're not using Cloudflare, you can get your temporary URL with the followin
 docker logs minecraft-server | grep -Eo "[0-9]*.tcp.[a-z]*.ngrok.io:[0-9]*"
 ```
 
-If you are using Cloudflare, you can connect to the server using the value from `CF_SRV_RECORD`.
+If you are using Cloudflare, you can connect to the server using the value from `CLOUDFLARE_SRV_RECORD`.
 
 ### Minecraft
 
