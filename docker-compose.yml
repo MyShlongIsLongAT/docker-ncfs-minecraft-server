@@ -9,10 +9,10 @@ services:
       - EULA=TRUE
       - NGROK_AUTH_TOKEN=<YOUR_NGROK_AUTH_TOKEN> # ngrok auth token
       #  If you have a Cloudflare Domain
-      #- CF_AUTH_EMAIL=<YOUR_CLOUDFLARE_AUTH_EMAIL> # Cloudflare account E-Mail
-      #- CF_API_KEY=<YOUR_CLOUDFLARE_API_KEY> # Cloudflare Global API Key
-      #- CF_ZONE_ID=<YOUR_CLOUDFLARE_ZONE_ID> # Cloudflare Zone ID
-      #- CF_CNAME_RECORD=<YOUR_CLOUDFLARE_CNAME_RECORD> # Cloudflare CNAME Domain
-      #- CF_SRV_RECORD=<YOUR_CLOUDFLARE_SRV_RECORD> # Cloudflare SRV Domain (for your connection)
+      #- CLOUDFLARE_AUTH_EMAIL=<YOUR_CLOUDFLARE_AUTH_EMAIL> # Cloudflare account E-Mail
+      #- CLOUDFLARE_API_KEY=<YOUR_CLOUDFLARE_API_KEY> # Cloudflare Global API Key
+      #- CLOUDFLARE_ZONE_ID=<YOUR_CLOUDFLARE_ZONE_ID> # Cloudflare Zone ID
+      #- CLOUDFLARE_CNAME_RECORD=<YOUR_CLOUDFLARE_CNAME_RECORD> # Cloudflare CNAME Domain
+      #- CLOUDFLARE_SRV_RECORD=<YOUR_CLOUDFLARE_SRV_RECORD> # Cloudflare SRV Domain (for your connection)
     volumes:
       - ./configs/minecraft-server-config/data:/data
